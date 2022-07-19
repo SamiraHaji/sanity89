@@ -3,8 +3,9 @@ import PortableText from "react-portable-text";
 import Header from "../../components/Header";
 import { sanityClient, urlFor } from "../../sanity";
 import { useForm, SubmitHandler} from "react-hook-form";
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Post } from '../../typings';
+import { log } from 'node:console'
 
 interface IFormInput{
   _id: string;
@@ -15,19 +16,18 @@ interface IFormInput{
 interface Props {
   post: Post;
 }
+
 function Post({ post }: Props) {
   const [submitted, setSubmitted] = useState(false); 
-  
-console.log(post)
 
   const { 
     register, 
     handleSubmit, 
-    formState: {errors},
+    formState: { errors },
    } =useForm<IFormInput>();
 
-const onSubmit: SubmitHandler<IFormInput> = (data) => {
- fetch("/api/createComment", {
+const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+ await fetch("/api/createComment", {
   method: "POST",
   body: JSON.stringify(data),
  })
@@ -44,9 +44,8 @@ const onSubmit: SubmitHandler<IFormInput> = (data) => {
     <main>
       <Header />
 
-      <img
+      <img src={urlFor(post.mainImage).url()!}
         className="w-full h-40 object-cover"
-        src={urlFor(post.mainImage).url()!}
         alt=""
       />
 
@@ -59,29 +58,30 @@ const onSubmit: SubmitHandler<IFormInput> = (data) => {
         <div className="flex item-center space-x-2">
           <img
             className="h-10 w-15 rounded-full"
-            src={urlFor(post.author.image).url()!}
+            src={urlFor(post.author.image).url()}
             alt=""
           />
           <p className="font-extralight text-sm">
-            Blog post by {""}
+            Blog post by {" "}
             <span className="text-green-600">{post.author.name}</span> -
-            Published at {new Date(post._createdAt).toLocaleString()}
+            Published at {" "}
+             {new Date(post._createdAt).toLocaleString()}
           </p>
         </div>
 
-        <div>
+        <div className="mt-10">
             <PortableText
-          className="mt-10"
+            className=""
             dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
             projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
             content={[post.body]}
             serializers={
                 {
                     h1: (props: any) => (
-                        <h1 className="text-2xl font-bold my-5 {...props}"/>
+                        <h1 className="text-2xl font-bold my-5" {...props}/>
                     ),
                     h2: (props: any) => (
-                        <h1 className="text-2xl font-bold my-5 {...props}"/>
+                        <h1 className="text-2xl font-bold my-5" {...props}/>
                     ),
                     li: ({children}: any) =>(
                         <li className="ml-4 list-disc">{children}</li>
@@ -176,7 +176,7 @@ export const getStaticPaths = async () => {
     slug{
         current
     },
-       }`;
+       }`
 
   const posts = await sanityClient.fetch(query);
 
@@ -189,7 +189,7 @@ export const getStaticPaths = async () => {
   return {
     paths,
     fallback: "blocking",
-  };
+  }
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const query = `*[_type == "post" && slug.current == "my-first-post"][0]{
@@ -211,13 +211,13 @@ body
 }`;
 
   const post = await sanityClient.fetch(query, {
-    slug: params?.slug,
-  });
+    slug: params?.slug
+  })
 
   if (!post) {
     return {
       notFound: true,
-    };
+    }
   }
   return {
     props: {
