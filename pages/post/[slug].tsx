@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import Header from '../../components/Header'
 import { sanityClient, urlFor } from '../../sanity'
 import { Post } from '../../typings'
-import PortableText from "react-portable-text";
-import { useForm, SubmitHandler, } from "react-hook-form"
+import PortableText from "react-portable-text"
+import { useForm, SubmitHandler } from "react-hook-form"
 import { log } from 'node:console'
 
 interface IFormInput {
