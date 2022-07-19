@@ -8,9 +8,6 @@
 sanitydemo
 sanity
 
-# TypeScript incremental build information
-tsconfig.tsbuildinfo
-
 # testing
 /coverage
 
