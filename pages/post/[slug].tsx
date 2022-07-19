@@ -81,7 +81,7 @@ const onSubmit: SubmitHandler<IFormInput> = (data) => {
                         <h1 className="text-2xl font-bold my-5 {...props}"/>
                     ),
                     h2: (props: any) => (
-                        <h1 className="text-2xl font-bold my-5 {...props}"/>
+                        <h2 className="text-2xl font-bold my-5 {...props}"/>
                     ),
                     li: ({children}: any) =>(
                         <li className="ml-4 list-disc">{children}</li>
