@@ -71,7 +71,7 @@ const onSubmit: SubmitHandler<IFormInput> = (data) => {
 
         <div>
             <PortableText
-          className=""
+          className="mt-10"
             dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
             projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
             content={[post.body]}
@@ -81,7 +81,7 @@ const onSubmit: SubmitHandler<IFormInput> = (data) => {
                         <h1 className="text-2xl font-bold my-5 {...props}"/>
                     ),
                     h2: (props: any) => (
-                        <h2 className="text-2xl font-bold my-5 {...props}"/>
+                        <h1 className="text-2xl font-bold my-5 {...props}"/>
                     ),
                     li: ({children}: any) =>(
                         <li className="ml-4 list-disc">{children}</li>
