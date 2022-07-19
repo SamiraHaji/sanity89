@@ -68,7 +68,7 @@ function Post({ post }: Props) {
                     className=''
                         dataset={process.env.NEXT_PUBLIC_SANITY_DATABASE}
                         projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
-                        content={post.body}
+                        content={[post.body]}
                         serializers={{
                             h1: (props: any) => (
                                 <h1 className="text-2xl font-bold my-5" {...props} />
