@@ -115,25 +115,25 @@ const onSubmit: SubmitHandler<IFormInput> = async (data) => {
 {...register("_id")}
 type="hidden"
 name="_id"
-value={post._id}/>
+value={post._id} />
 
 
 <label className="block mb-5">
   <span className="text-gray-700">Name</span>
   <input
 {...register("name", {required:true})} 
-className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring" placeholder="Samira Dev" type="text"/> 
+className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring" placeholder=" " type="text"/> 
 </label>
 <label className="block mb-5">
   <span className="text-gray-700">Email</span>
   <input
 {...register("email", {required:true})} 
-className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring" type="email" placeholder="sam@dev.fr"/> 
+className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yellow-500 outline-none focus:ring" type="email" placeholder=" "/> 
 </label>
 <label >
   <span className="text-gray-700"> Comment </span>
   <textarea {...register("comment", {required:true})} 
-  className="shadow border rounded py-2 px-3 form-texarea mt-1 block w-full ring-yellow-500 outline-none focus:ring" placeholder="Comment" rows={8} /> 
+  className="shadow border rounded py-2 px-3 form-texarea mt-1 block w-full ring-yellow-500 outline-none focus:ring" placeholder="" rows={8} /> 
 </label>
 
 {/* error will return when false validation fails */}
@@ -145,21 +145,21 @@ className="shadow border rounded py-2 px-3 form-input mt-1 block w-full ring-yel
     {errors.email && (
       <span className="text-red-500" >The Email Field is required</span>)}
 </div>
-<input 
-value="Submit" 
-type="submit"
+<input value="Submit" type="submit"
 className="shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded cursor-pointer"/>
 </form>
   )}
  
  {/* Comments */}
- <div className="flex flex-col p-10 my-10 max-w-2xl mx-auto shadow-yellow-500 shadow space-y-2">
+ <div className="flex flex-col p-10 my-10 max-w-2xl 
+ mx-auto shadow-yellow-500 shadow space-y-2">
   <h3 className="text-4xl">Comments</h3>
   <hr className="pb-2"/>
   {post.comments.map((comment) => (
 <div key={comment._id}>
   <p>
-    <span className="text-yellow-500">{comment.name} :</span> {comment.comment}</p>
+    <span className="text-yellow-500">{comment.name}: </span> 
+    {comment.comment}</p>
 </div>
   ))}
  </div>
@@ -168,15 +168,15 @@ className="shadow bg-yellow-500 hover:bg-yellow-400 focus:shadow-outline focus:o
   );
 };
 
-export default Post;
+export default Post
 
 export const getStaticPaths = async () => {
   const query = `*[_type == "post"]{
     _id,
     slug{
         current
-    },
-       }`
+    }
+       }`;
 
   const posts = await sanityClient.fetch(query);
 
@@ -188,11 +188,11 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   }
 };
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const query = `*[_type == "post" && slug.current == "my-first-post"][0]{
+  const query = `*[_type == "post" && slug.current == "my-first-post"] [0] {
     _id,
     _createdAt,
     title,

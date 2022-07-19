@@ -5,8 +5,8 @@
 /.pnp
 .pnp.js
 
-# sanitydemo
-/node_modules
+sanitydemo
+sanity
 
 # TypeScript incremental build information
 tsconfig.tsbuildinfo
