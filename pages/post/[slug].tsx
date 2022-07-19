@@ -66,6 +66,7 @@ function Post({ post }: Props) {
                 <div className="mt-10">
                     <PortableText
                     className=''
+                    
                         dataset={process.env.NEXT_PUBLIC_SANITY_DATABASE}
                         projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
                         content={[post.body]}
