@@ -8,6 +8,9 @@
 # sanitydemo
 /node_modules
 
+# TypeScript incremental build information
+tsconfig.tsbuildinfo
+
 # testing
 /coverage
 
