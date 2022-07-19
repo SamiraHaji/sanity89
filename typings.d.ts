@@ -16,7 +16,7 @@ export interface Post{
       slug: {
         current: string;
      };
-      body:{[Object]};
+      body:[Object];
 }
 
 export interface Comment {
