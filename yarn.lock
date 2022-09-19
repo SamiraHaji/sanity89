@@ -864,10 +864,10 @@
   "resolved" "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   "version" "16.13.1"
 
-"react-portable-text@^0.4.3":
-  "integrity" "sha512-r//xYac1Bf5GMk3eKZiDpoRtt0N/W6kEAkI+zw148JGAdr2IW9MvhT/giOYop0KCuiyECry1yonhomFFbHeMAw=="
-  "resolved" "https://registry.npmjs.org/react-portable-text/-/react-portable-text-0.4.3.tgz"
-  "version" "0.4.3"
+"react-portable-text@^0.5.1":
+  "integrity" "sha512-K4Y1gm+VukbDm8Z4j4XkReL/76JkFdhcbqXZJrcz0y4XvPCCThzRFj7fh7dkxXpVq9VBVALZVighKNXVtU+ezA=="
+  "resolved" "https://registry.npmjs.org/react-portable-text/-/react-portable-text-0.5.1.tgz"
+  "version" "0.5.1"
   dependencies:
     "@sanity/block-content-to-react" "^2.0.0"
 

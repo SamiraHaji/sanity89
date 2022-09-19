@@ -1,4 +1,3 @@
-
 export default {
     name: 'post',
     title: 'Post',
@@ -7,7 +6,7 @@ export default {
       {
         name: 'title',
         title: 'Title',
-        description: 'Keep titles short!',
+        description: 'Merci de mettre un titre cours!',
         type: 'string',
       },
       {
@@ -15,6 +14,7 @@ export default {
         title: 'Description',
         type: 'string',
       },
+
       {
         name: 'slug',
         title: 'Slug',
@@ -70,4 +70,3 @@ export default {
       },
     },
   }
-  
